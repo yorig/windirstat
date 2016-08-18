@@ -395,7 +395,7 @@ UINT CXySlider::OnGetDlgCode()
 	return DLGC_WANTARROWS;
 }
 
-UINT CXySlider::OnNcHitTest(CPoint /*point*/)
+LRESULT CXySlider::OnNcHitTest(CPoint /*point*/)
 {
 	return HTCLIENT;
 }

@@ -933,6 +933,8 @@ void CItem::DoSomeWork(DWORD ticks)
 				DriveVisualUpdateDuringWork();
 
 				b = finder.FindNextFile();
+				if (finder.GetAttributes() & FILE_ATTRIBUTE_REPARSE_POINT)
+					continue;
 				if (finder.IsDots())
 					continue;
 				if (finder.IsDirectory())
@@ -1210,7 +1212,8 @@ void CItem::UpwardSetUndone()
 {
 	if (GetType() == IT_DRIVE && IsDone() && GetDocument()->OptionShowUnknown())
 	{
-		for (int i=0; i < GetChildrenCount(); i++)
+		int i=0;
+		for (; i < GetChildrenCount(); i++)
 			if (GetChild(i)->GetType() == IT_UNKNOWN)
 				break;
 		CItem *unknown = GetChild(i);
@@ -1538,7 +1541,8 @@ COLORREF CItem::GetPercentageColor() const
 
 int CItem::FindFreeSpaceItemIndex() const
 {
-	for (int i=0; i < GetChildrenCount(); i++)
+	int i=0;
+	for (; i < GetChildrenCount(); i++)
 	{
 		if (GetChild(i)->GetType() == IT_FREESPACE)
 			break;

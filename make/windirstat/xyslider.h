@@ -89,7 +89,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnDestroy();
 	afx_msg UINT OnGetDlgCode();
-	afx_msg UINT OnNcHitTest(CPoint point);
+	afx_msg LRESULT OnNcHitTest(CPoint point);
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	afx_msg void OnKillFocus(CWnd* pNewWnd);
 	afx_msg void OnPaint();
